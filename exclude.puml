@@ -1,0 +1,267 @@
+@startuml
+class "KeyNoteData" as C_0009235650241272089013
+class C_0009235650241272089013 {
+.. By 沈威宇, 林孜謙 ..
++holds : int8_t
++lane : std::size_t
++startFragment : std::size_t
+}
+class "game_priority_queue<T>" as C_0002166758670113044005
+class C_0002166758670113044005 {
+.. By 沈威宇 ..
+}
+class "Effect" as C_0000523499468392543389
+class C_0000523499468392543389 {
+.. By 沈威宇 ..
++content : uint32_t
++endTime : uint32_t
++num : uint32_t
+}
+class "game_priority_queue<Effect>" as C_0009594332884078688296
+class C_0009594332884078688296 {
+.. By 沈威宇 ..
+}
+class "Game" as C_0017470460303031448044
+class C_0017470460303031448044 {
+.. Key notes parts by 沈威宇, mouse notes parts by 于昀辰 ..
++Game(std::size_t lanes_, std::size_t fragments_, uint32_t mpf, mystd::vector<KeyNoteData> & keynotes) : void
+..
++addCombo(uint32_t nowMs) : void
++addHoldScore(uint32_t nowMs, std::size_t lane) : void
++addMouseScore(int scoreToAdd, uint32_t nowMs) : void
++addTapScore(uint32_t nowMs, std::size_t lane) : void
++clearExpiredEffects(uint32_t nowMs) : void
++getBadCount() const : uint32_t
++getCombo() const : uint32_t
++getGoodCount() const : uint32_t
++getGreatCount() const : uint32_t
++getHeldTime() const : uint32_t
++getMaxCombo() const : uint32_t
++getMissCount() const : uint32_t
++getPerfectCount() const : uint32_t
++getScore() const : uint32_t
++keyPressed(std::size_t lane, uint32_t nowMs) : void
++keyReleased(std::size_t lane, uint32_t nowMs) : void
++loadFragment(uint32_t nowMs, std::function<void (Game &)> foo = nullptr, std::function<void (Game &)> bar = nullptr) : void
++resetCombo() : void
+__
++badCount : uint32_t
++centerEffects : game_priority_queue<Effect>
++combo : uint32_t
++fragments : std::size_t
++goodCount : uint32_t
++greatCount : uint32_t
++heldTime : uint32_t
++highway : mystd::vector<mystd::circulate<int8_t,mystd::vector<int8_t>>>
++holdPressedTime : mystd::vector<uint32_t>
++laneEffects : mystd::vector<Effect>
++lanePressed : mystd::vector<bool>
++lanes : std::size_t
++loadNext : std::size_t
++maxCombo : uint32_t
++missCount : uint32_t
++msPerFragment : uint32_t
++notes : mystd::vector<KeyNoteData> &
++nowFragment : std::size_t
++perfectCount : uint32_t
++score : uint32_t
+}
+class "MouseNoteData" as C_0017368013311930947049
+class C_0017368013311930947049 {
+.. By 于昀辰 ..
++lane : std::size_t
++startFragment : std::size_t
++type : int
+}
+class "ChartParser" as C_0008156336382136116056
+class C_0008156336382136116056 {
+.. By 林孜謙 ..
++ChartParser(mystd::vector<KeyNoteData> & keyNotes_) : void
+..
++getBPM() const : int
++getFragmentTime(std::size_t fragment) const : double
++getFragmentsPerBeat() const : int
++getMouseNotes() const : const std::vector<MouseNoteData> &
++getMusicFile() const : const std::string &
++getOffset() const : int
++load(const std::string & filepath) : bool
+-parseKeyNoteLine(const std::string & line, int density, std::size_t & currentFragment) : void
+-parseKeyNoteToken(const std::string & token, std::size_t fragment, std::size_t fragmentsPerGrid) : void
+-parseKeyNotes(std::ifstream & file) : std::string
+-parseMetadata(const std::string & line) : void
+-parseMouseNoteLine(const std::string & line, int density, std::size_t & currentFragment) : void
+-parseMouseNoteToken(const std::string & token, std::size_t fragment) : void
+-parseMouseNotes(std::ifstream & file) : std::string
+-parseSingleKeyNote(const std::string & noteStr, std::size_t fragment, std::size_t fragmentsPerGrid) : void
+-parseSingleMouseObject(const std::string & noteStr, std::size_t fragment) : void
++printChart() const : void
+-trim(const std::string & str) : std::string
+__
+-bpm : int
+-fragmentsPerBeat : int
+-keyNotes : mystd::vector<KeyNoteData> &
+-mouseNotes : std::vector<MouseNoteData>
+-musicFile : std::string
+-offset : int
+}
+enum "Alignment" as C_0004318428501306979419
+enum C_0004318428501306979419 {
+.. By 沈威宇 ..
+ALIGN_LEFT
+ALIGN_CENTER
+ALIGN_RIGHT
+}
+class "MouseNoteCollisionData" as C_0002361052596003920540
+class C_0002361052596003920540 {
+.. By 于昀辰 ..
++rect : SDL_Rect
++startFragment : int
++type : int
+}
+class "NotesCacheHash" as C_0003128479952304912189
+class C_0003128479952304912189 {
+.. By 沈威宇 ..
++operator()(const mystd::tuple<int8_t,bool,uint32_t> & t) const : std::size_t
+__
+}
+class "Renderer" as C_0018004500907526464145
+class C_0018004500907526464145 {
+.. Key notes parts by 沈威宇, mouse notes parts by 于昀辰 ..
++Renderer(Game & game_, int screenW_, int screenH_, SDL_Renderer * renderer, TTF_Font * large_font_, TTF_Font * medium_font_, TTF_Font * small_font_) : void
++~Renderer() : void
+..
+-calculateMouseNoteCollisions(uint32_t nowMs) : std::vector<MouseNoteCollisionData>
+-clearCache() : void
+-createFragmentTexture(SDL_Renderer * rnd, int8_t fragmentValue, bool pressed, uint32_t holdPressedTime) : SDL_Texture *
+-drawCenterEffect(SDL_Renderer * rnd, uint32_t effect, uint32_t num) : void
+-drawLaneEffect(SDL_Renderer * rnd, std::size_t lane, uint32_t effect) : void
+-drawText(SDL_Renderer * rnd, const std::string & text, int x, int y, TTF_Font * font, SDL_Color color, Alignment align = ALIGN_LEFT) : void
+{static} -drawTextBackground(SDL_Renderer * rnd, int centerX, int centerY, const std::string & text, TTF_Font * font, int padding, SDL_Color bg) : void
+-getMouseNoteTexture(int type) : SDL_Texture *
+-getTextTexture(SDL_Renderer * rnd, const std::string & text, TTF_Font * font, SDL_Color color) : SDL_Texture *
++getVisibleMouseNoteCollisions(uint32_t nowMs) : std::vector<MouseNoteCollisionData>
+-loadEffectImages() : void
+-loadImageTexture(const char * path) : SDL_Texture *
++render(SDL_Renderer * rnd, uint32_t offsetMs) : void
+-renderMouseNotes(SDL_Renderer * rnd, const std::vector<MouseNoteCollisionData> & visibleNotes) : void
++updateDimension(int screenW_, int screenH_) : void
+__
++fps : float
+-fragmentHeight : int
+-game : Game &
+-imageTextureCache : std::unordered_map<std::string,SDL_Texture *>
+-laneWidth : int
+-large_font : TTF_Font *
+-medium_font : TTF_Font *
+-notesTextureCache : std::unordered_map<mystd::tuple<int8_t,bool,uint32_t>,SDL_Texture *,NotesCacheHash>
+-screenH : int
+-screenW : int
+-sdl_renderer : SDL_Renderer *
+-small_font : TTF_Font *
+-textTextureCache : std::unordered_map<std::string,SDL_Texture *>
+}
+class "MusicManager" as C_0013018981818162392349
+class C_0013018981818162392349 {
+.. By 林孜謙 ..
++MusicManager() : void
++~MusicManager() : void
+..
++cleanup() : void
++fadeInMusic(int ms, int loops = -1) : void
++fadeOutMusic(int ms) : void
++getMusicTime() const : Uint32
++init() : bool
++isMusicPlaying() const : bool
++loadMusic(const std::string & filepath) : bool
++loadSoundEffect(const std::string & name, const std::string & filepath) : bool
++pauseMusic() : void
++playMusic(int loops = -1) : void
++playSoundEffect(const std::string & name, int loops = 0) : void
++resumeMusic() : void
++setMusicVolume(int volume) : void
++setSFXVolume(int volume) : void
++stopMusic() : void
+__
+-bgMusic : Mix_Music *
+-initialized : bool
+-musicStartTime : Uint32
+-musicVolume : int
+-paused : bool
+-sfxMap : std::map<std::string,Mix_Chunk *>
+-sfxVolume : int
+}
+class "Character" as C_0013209060341015165256
+class C_0013209060341015165256 {
+.. By 于昀辰 ..
++Character(SDL_Renderer * renderer, int initialX, int fixedY, int w, int h, int min_X, int max_X, const std::string & imagePathLeft, const std::string & imagePathRight, Uint32 intervalMs) : void
++Character(const Character &) = deleted : void
++~Character() : void
+..
++operator=(const Character &) = deleted : Character &
+..
++getCollisionRect() const : SDL_Rect
++render(SDL_Renderer * renderer) const : void
++updatePosition(int mouseX, Uint32 currentTime) : void
+__
+-height : const int
+-isLeftLegUp : bool
+-lastTextureSwitchTime : Uint32
+-maxX : const int
+-minX : const int
+-switchIntervalMs : Uint32
+-textureLeft : SDL_Texture *
+-textureRight : SDL_Texture *
+-width : const int
+-x : int
+-y : const int
+}
+enum "GameState" as C_0004356735495323104445
+enum C_0004356735495323104445 {
+MAIN_MENU
+SETTINGS
+COUNTDOWN
+GAME
+PAUSE
+RESULT
+}
+class "ResultData" as C_0010225641292159707253
+class C_0010225641292159707253 {
+.. By 林孜謙 ..
++accuracy : float
++badCount : int
++goodCount : int
++greatCount : int
++maxCombo : int
++missCount : int
++perfectCount : int
++totalNotes : int
++totalScore : int
+}
+class "MainMenuTextures" as C_0003193202570464766059
+class C_0003193202570464766059 {
+.. By 于昀辰 ..
++background : SDL_Texture *
++logo : SDL_Texture *
++settingsButton : SDL_Texture *
++settingsWindow : SDL_Texture *
++sliderKnob : SDL_Texture *
++songFrame : SDL_Texture *
++songsButton : SDL_Texture *
++startButton : SDL_Texture *
++volumeIcon : SDL_Texture *
+}
+C_0009594332884078688296 ..> C_0000523499468392543389
+C_0009594332884078688296 ..|> C_0002166758670113044005
+C_0017470460303031448044 --> C_0009235650241272089013 : +notes
+C_0017470460303031448044 o-- C_0000523499468392543389 : +laneEffects
+C_0017470460303031448044 o-- C_0009594332884078688296 : +centerEffects
+C_0008156336382136116056 --> C_0009235650241272089013 : -keyNotes
+C_0008156336382136116056 o-- C_0017368013311930947049 : -mouseNotes
+C_0018004500907526464145 ..> C_0002361052596003920540
+C_0018004500907526464145 ..> C_0004318428501306979419
+C_0018004500907526464145 --> C_0017470460303031448044 : -game
+C_0018004500907526464145 o-- C_0003128479952304912189 : -notesTextureCache
+
+'Generated with clang-uml, version 0.6.2
+'LLVM version Ubuntu clang version 20.1.2 (0ubuntu1)
+@enduml
