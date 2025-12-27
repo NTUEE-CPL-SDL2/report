@@ -31,16 +31,16 @@ Class Diagram 均由沈威宇使用 clang-uml 自原始 C++ 程式碼中自動�
 
 ## PNG
 
-- `Complete class diagram` 左至右切割區塊：
-  + [檢視](https://github.com/NTUEE-CPL-SDL2/report/blob/main/full_page_w0_h0.png)、[下載](https://raw.githubusercontent.com/NTUEE-CPL-SDL2/report/main/full_page_w0_h0.png)
-  + [檢視](https://github.com/NTUEE-CPL-SDL2/report/blob/main/full_page_w1_h0.png)、[下載](https://raw.githubusercontent.com/NTUEE-CPL-SDL2/report/main/full_page_w1_h0.png)
-  + [檢視](https://github.com/NTUEE-CPL-SDL2/report/blob/main/full_page_w2_h0.png)、[下載](https://raw.githubusercontent.com/NTUEE-CPL-SDL2/report/main/full_page_w2_h0.png)
-  + [檢視](https://github.com/NTUEE-CPL-SDL2/report/blob/main/full_page_w3_h0.png)、[下載](https://raw.githubusercontent.com/NTUEE-CPL-SDL2/report/main/full_page_w3_h0.png)
+- `Complete class diagram` 橫向切割區塊：
+  + 左一：[檢視](https://github.com/NTUEE-CPL-SDL2/report/blob/main/full_page_w0_h0.png)、[下載](https://raw.githubusercontent.com/NTUEE-CPL-SDL2/report/main/full_page_w0_h0.png)
+  + 左二：[檢視](https://github.com/NTUEE-CPL-SDL2/report/blob/main/full_page_w1_h0.png)、[下載](https://raw.githubusercontent.com/NTUEE-CPL-SDL2/report/main/full_page_w1_h0.png)
+  + 左三：[檢視](https://github.com/NTUEE-CPL-SDL2/report/blob/main/full_page_w2_h0.png)、[下載](https://raw.githubusercontent.com/NTUEE-CPL-SDL2/report/main/full_page_w2_h0.png)
+  + 左四：[檢視](https://github.com/NTUEE-CPL-SDL2/report/blob/main/full_page_w3_h0.png)、[下載](https://raw.githubusercontent.com/NTUEE-CPL-SDL2/report/main/full_page_w3_h0.png)
 - `Except mystd class diagram`：[檢視](https://github.com/NTUEE-CPL-SDL2/report/blob/main/exclude.png)、[下載](https://raw.githubusercontent.com/NTUEE-CPL-SDL2/report/main/exclude.png)
-- `mystd except array class diagram` 左至右切割區塊：
-  + [檢視](https://github.com/NTUEE-CPL-SDL2/report/blob/main/mystd_page_w0_h0.png)、[下載](https://raw.githubusercontent.com/NTUEE-CPL-SDL2/report/main/mystd_page_w0_h0.png)
-  + [檢視](https://github.com/NTUEE-CPL-SDL2/report/blob/main/mystd_page_w1_h0.png)、[下載](https://raw.githubusercontent.com/NTUEE-CPL-SDL2/report/main/mystd_page_w1_h0.png)
-  + [檢視](https://github.com/NTUEE-CPL-SDL2/report/blob/main/mystd_page_w2_h0.png)、[下載](https://raw.githubusercontent.com/NTUEE-CPL-SDL2/report/main/mystd_page_w2_h0.png)
+- `mystd except array class diagram` 橫向切割區塊：
+  + 左一：[檢視](https://github.com/NTUEE-CPL-SDL2/report/blob/main/mystd_page_w0_h0.png)、[下載](https://raw.githubusercontent.com/NTUEE-CPL-SDL2/report/main/mystd_page_w0_h0.png)
+  + 左二：[檢視](https://github.com/NTUEE-CPL-SDL2/report/blob/main/mystd_page_w1_h0.png)、[下載](https://raw.githubusercontent.com/NTUEE-CPL-SDL2/report/main/mystd_page_w1_h0.png)
+  + 左三：[檢視](https://github.com/NTUEE-CPL-SDL2/report/blob/main/mystd_page_w2_h0.png)、[下載](https://raw.githubusercontent.com/NTUEE-CPL-SDL2/report/main/mystd_page_w2_h0.png)
 - `Array class diagram`：[檢視](https://github.com/NTUEE-CPL-SDL2/report/blob/main/array.png)、[下載](https://raw.githubusercontent.com/NTUEE-CPL-SDL2/report/main/array.png)
 
 ## PlantUML 原始碼
